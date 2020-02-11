@@ -7,12 +7,12 @@
 var pokemonRepository = (function() {
   "use strict";
   var repository = [];
-  var apiUrl = "https://dog.ceo/api/breeds/list/all";
+  var apiUrl = "https://dog.ceo/api/breed/hound/images";
   var $modalContainer = document.querySelector("#modal-container");
 
   //Function to add new Pokemon data
-  function add(pokemon) {
-    repository.push(pokemon);
+  function add(hound) {
+    repository.push(hound);
   }
 
   //Function to pull all Pokemon data
@@ -22,17 +22,17 @@ var pokemonRepository = (function() {
 
   //Function to add list for each pokemon object
   function addListItem(pokemon) {
-    var $pokemonList = document.querySelector(".pokemon-list");
+    var $houndList = document.querySelector(".hound-list");
     var $listItem = document.createElement("li");
     var $button = document.createElement("button");
 
-    $pokemonList.appendChild($listItem);
+    $houndList.appendChild($listItem);
     $listItem.appendChild($button);
-    $button.innerText = pokemon.name;
+    $button.innerText = hound.name;
     $button.classList.add("list-button");
     $listItem.classList.add("buttonstyle");
     $button.addEventListener("click", function(event) {
-      showDetails(pokemon);
+      showDetails(hound);
     });
   }
 
@@ -54,11 +54,11 @@ var pokemonRepository = (function() {
       })
       .then(function(json) {
         json.results.forEach(function(item) {
-          var pokemon = {
+          var hound = {
             name: item.name,
             detailsUrl: item.url
           };
-          add(pokemon);
+          add(hound);
         });
       })
       .catch(function(e) {
@@ -168,15 +168,15 @@ var pokemonRepository = (function() {
 // END of IIFE for Pokedex repository
 
 //Creates list of Pokemon with Pokemon's name on the button
-pokemonRepository.loadList().then(function() {
-  pokemonRepository.getAll().forEach(function(pokemon) {
-    pokemonRepository.addListItem(pokemon);
+houndRepository.loadList().then(function() {
+  houndRepository.getAll().forEach(function(hound) {
+    houndRepository.addListItem(hound);
   });
 });
 
 //Function to show details of each Pokemon
 function showDetails(item) {
-  pokemonRepository.loadDetails(item).then(function() {
-    pokemonRepository.showModal(item);
+  houndRepository.loadDetails(item).then(function() {
+    houndRepository.showModal(item);
   });
 }
