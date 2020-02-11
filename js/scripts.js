@@ -1,27 +1,27 @@
 /*!
  * Here comes all Javascript
- * Pokedoki App
+ * Scoobidex App
  * Date: 2019-11-11
  */
-// START of IIFE for Pokedex repository
-var pokemonRepository = (function() {
+// START of IIFE for Scoobidex repository
+var houndRepository = (function() {
   "use strict";
   var repository = [];
   var apiUrl = "https://dog.ceo/api/breed/hound/images";
   var $modalContainer = document.querySelector("#modal-container");
 
-  //Function to add new Pokemon data
+  //Function to add new hound data
   function add(hound) {
     repository.push(hound);
   }
 
-  //Function to pull all Pokemon data
+  //Function to pull all hound data
   function getAll() {
     return repository;
   }
 
-  //Function to add list for each pokemon object
-  function addListItem(pokemon) {
+  //Function to add list for each Hound object
+  function addListItem(hound) {
     var $houndList = document.querySelector(".hound-list");
     var $listItem = document.createElement("li");
     var $button = document.createElement("button");
@@ -37,16 +37,16 @@ var pokemonRepository = (function() {
   }
 
   function add(name) {
-    /*Add Additional Pokemon Attributes To Object Array*/
+    /*Add Additional Hound Attributes To Object Array*/
     repository.push(name);
   }
 
   function catchAll() {
-    /* Function Used To Return Pokedex Object Array*/
+    /* Function Used To Return Scoobidex Object Array*/
     return repository;
   }
 
-  //Function to load pokemon list from API
+  //Function to load hound list from API
   function loadList() {
     return fetch(apiUrl)
       .then(function(response) {
@@ -111,7 +111,7 @@ var pokemonRepository = (function() {
     modalType.classList.add("modal-details");
     modalType.innerText = "Type: " + item.types;
 
-    //Pokemon display image in modal
+    //Hound display image in modal
     var imageElement = document.createElement("img");
     imageElement.classList.add("modal-img");
     imageElement.src = item.imageUrl;
@@ -165,16 +165,16 @@ var pokemonRepository = (function() {
     hideModal: hideModal
   };
 })();
-// END of IIFE for Pokedex repository
+// END of IIFE for Scoobidex repository
 
-//Creates list of Pokemon with Pokemon's name on the button
+//Creates list of Dogs with hound breeds name on the button
 houndRepository.loadList().then(function() {
   houndRepository.getAll().forEach(function(hound) {
     houndRepository.addListItem(hound);
   });
 });
 
-//Function to show details of each Pokemon
+//Function to show details of each hound breed
 function showDetails(item) {
   houndRepository.loadDetails(item).then(function() {
     houndRepository.showModal(item);

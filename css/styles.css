@@ -1,6 +1,5 @@
-/* Pokido Style Sheet */
-/* Color Pokémon: Yellow #ffcb05, Blue #3466af
-Light blue Pokemon: 618ED0
+/* Scoobidex Style Sheet */
+
 /* here you can write your Site colors */
 body {
   background-color: #33312d;
@@ -42,7 +41,7 @@ p
   color: #ffa500;
   background-color: #33312d;
 }
-/* pokemon list and items, button styles */
+/* Hound list and items, button styles */
 .list-button {
     background-color: #fff;
     width: 100%;
@@ -53,7 +52,7 @@ p
     cursor: pointer;
 }
 
-.pokemon-list li {
+.hound-list li {
     text-align: center;
     list-style-type: none;
     padding: 5px;
@@ -152,13 +151,13 @@ label {
 }
 
 @media all and (max-width: 1024px) {
-	.pokemon-list li {
+	.hound-list li {
 		width: 100%;
 	}
 }
 
 @media all and (max-width: 630px) {
-	.pokemon-list li {
+	.hound-list li {
 		width: 100%;
 	}
 }
