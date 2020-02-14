@@ -103,13 +103,9 @@ var houndRepository = (function() {
     modalTitle.innerText = item.name;
     modalTitle.classList.add("modal-title");
 
-    var modalHeight = document.createElement("p");
-    modalHeight.innerText = "Height: " + item.height;
-    modalHeight.classList.add("modal-details");
-
     var modalType = document.createElement("p");
     modalType.classList.add("modal-details");
-    modalType.innerText = "Type: " + item.types;
+    modalType.innerText = "sub-breed: " + item.types;
 
     //Hound display image in modal
     var imageElement = document.createElement("img");
@@ -119,7 +115,6 @@ var houndRepository = (function() {
     modal.appendChild(closeButtonElement);
     modal.appendChild(imageElement);
     modal.appendChild(modalTitle);
-    modal.appendChild(modalHeight);
     modal.appendChild(modalType);
     $modalContainer.appendChild(modal);
   }
