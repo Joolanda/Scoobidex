@@ -25,13 +25,11 @@ var dogRepository = (function() {
   function addListItem(dog) {
     var $dogList = $('.dog-list');
     var $listItem = $('<li></li>');
-    var $button = $(<div class='list-button'>);
+    var $button = $('<button class='list-button'>' + dog.name + '</button>');
 
-    $('dogList').append($listItem);
-    $('listItem').append($button);
-    $button.innerText = dog.message; // take a better look at this..rewrite
-    $button.classList.add('list-button'); // take a better look at this..rewrite
-    $listItem.classList.add('buttonstyle'); // take a better look at this..rewrite
+    $dogList.append($listItem);
+    $listItem.append($button class='buttonstyle');
+    $button.html(dog.name class='list-button'); 
     $button.on('click', function() {
       showDetails(dog);
     });
