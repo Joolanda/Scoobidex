@@ -8,8 +8,8 @@ var houndRepository = (function() {
   "use strict";
   var repository = [];
   var apiUrl = "https://dog.ceo/api/breeds/list/all";
-  var $modalContainer = $("#modal-container");
-  var $houndList = $("ul");
+  var $modalContainer = $('#modal-container');
+  var $houndList = $('ul');
 
   //Function to add new hound data
   function add(hound) {
@@ -23,16 +23,16 @@ var houndRepository = (function() {
 
   //Function to add list for each Hound object
   function addListItem(hound) {
-    var $houndList = $(".hound-list");
-    var $listItem = $("li");
-    var $button = $("<div class="list-button">);
+    var $houndList = $('.hound-list');
+    var $listItem = $('li');
+    var $button = $("<div class='list-button'>);
 
     $('houndList').append($listItem);
     $('listItem').append($button);
     $button.innerText = hound.message;
-    $button.classList.add("list-button");
-    $listItem.classList.add("buttonstyle");
-    $button.on("click", function() {
+    $button.classList.add('list-button');
+    $listItem.classList.add('buttonstyle');
+    $button.on('click', function() {
       showDetails(hound);
     });
   }
@@ -85,29 +85,29 @@ var houndRepository = (function() {
 
   function showModal(item) {
     //clear all existing modal content
-    $modalContainer.innerHTML = "";
-    $modalContainer.classList.add("is-visible");
+    $modalContainer.innerHTML = '';
+    $modalContainer.classList.add('is-visible');
 
-    var modal = document.createElement("div");
-    modal.classList.add("modal");
+    var modal = document.createElement('div');
+    modal.classList.add('modal');
 
     // add the new modal content
-    var closeButtonElement = document.createElement("button");
-    closeButtonElement.classList.add("modal-close");
-    closeButtonElement.innerText = "Close";
-    closeButtonElement.addEventListener("click", hideModal);
+    var closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('modal-close');
+    closeButtonElement.innerText = 'Close';
+    closeButtonElement.addEventListener('click', hideModal);
 
-    var modalTitle = document.createElement("h1");
+    var modalTitle = document.createElement('h1');
     modalTitle.innerText = item.message;
-    modalTitle.classList.add("modal-title");
+    modalTitle.classList.add('modal-title');
 
-    var modalType = document.createElement("p");
-    modalType.classList.add("modal-details");
-    modalType.innerText = "sub-breed: " + item.breeds;
+    var modalType = document.createElement('p');
+    modalType.classList.add('modal-details');
+    modalType.innerText = 'sub-breed: ' + item.breeds;
 
     //Hound display image in modal
-    var imageElement = document.createElement("img");
-    imageElement.classList.add("modal-img");
+    var imageElement = document.createElement('img');
+    imageElement.classList.add('modal-img');
     imageElement.src = item.imageUrl;
 
     modal.appendChild(closeButtonElement);
@@ -118,12 +118,12 @@ var houndRepository = (function() {
   }
 
   function hideModal() {
-    var $modalContainer = document.querySelector("#modal-container");
-    $modalContainer.classList.remove("is-visible");
+    var $modalContainer = document.querySelector('#modal-container');
+    $modalContainer.classList.remove('is-visible');
   }
 
-  document.querySelector("#show-modal").addEventListener("click", () => {
-    showModal("Modal title", "This is the modal content!");
+  document.querySelector('#show-modal').addEventListener('click', () => {
+    showModal('Modal title', "This is the modal content!");
   });
 
   //Function to show details of each hound breed
