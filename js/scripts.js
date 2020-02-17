@@ -29,9 +29,9 @@ var dogRepository = (function() {
 
     $('houndList').append($listItem);
     $('listItem').append($button);
-    $button.innerText = dog.message;
-    $button.classList.add('list-button');
-    $listItem.classList.add('buttonstyle');
+    $button.innerText = dog.message; // take a better look at this..rewrite
+    $button.classList.add('list-button'); // take a better look at this..rewrite
+    $listItem.classList.add('buttonstyle'); // take a better look at this..rewrite
     $button.on('click', function() {
       showDetails(dog);
     });
