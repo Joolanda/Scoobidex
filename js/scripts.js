@@ -8,7 +8,7 @@ var houndRepository = (function() {
   "use strict";
   var repository = [];
   var apiUrl = "https://dog.ceo/api/breeds/list/all";
-  var $modalContainer = document.querySelector("#modal-container");
+  var $modalContainer = $("#modal-container");
   var $houndList = $("ul");
 
   //Function to add new hound data
@@ -23,16 +23,16 @@ var houndRepository = (function() {
 
   //Function to add list for each Hound object
   function addListItem(hound) {
-    var $houndList = document.querySelector(".hound-list");
-    var $listItem = document.createElement("li");
-    var $button = document.createElement("button");
+    var $houndList = $(".hound-list");
+    var $listItem = $("li");
+    var $button = $("<div class="list-button">);
 
-    $houndList.appendChild($listItem);
-    $listItem.appendChild($button);
+    $('houndList').append($listItem);
+    $('listItem').append($button);
     $button.innerText = hound.message;
     $button.classList.add("list-button");
     $listItem.classList.add("buttonstyle");
-    $button.addEventListener("click", function(event) {
+    $button.on("click", function() {
       showDetails(hound);
     });
   }
