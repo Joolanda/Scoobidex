@@ -80,13 +80,12 @@ var dogRepository = (function() {
 
   function showModal(item) {
     //clear all existing modal content
-    $modalContainer.innerHTML = '';
-    $modalContainer.classList.add('is-visible');
+    $modalContainer.innerHTML = '' + class='is-visible');
 
     var $modal = $('<div class='modal'></div>');
 
     // add the new modal content
-    var $closeButtonElement = $('<button='modal-close'>Close</button>');
+    var $closeButtonElement = $('<button='modal-close'>Close</button>'');
     $closeButtonElement.on('click', function(hideModal);
 
     var modalTitle = $('h1');
