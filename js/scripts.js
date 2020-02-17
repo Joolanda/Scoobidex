@@ -4,41 +4,41 @@
  * Date: 2020-14-02
  */
 // START of IIFE for Scoobidex repository
-var houndRepository = (function() {
+var dogRepository = (function() {
   "use strict";
   var repository = [];
   var apiUrl = "https://dog.ceo/api/breeds/list/all";
   var $modalContainer = $('#modal-container');
-  var $houndList = $('ul');
+  var $dogList = $('ul');
 
   //Function to add new hound data
-  function add(hound) {
-    repository.push(hound);
+  function add(dog) {
+    repository.push(dog);
   }
 
-  //Function to pull all hound data
+  //Function to pull all dog data
   function getAll() {
     return repository;
   }
 
-  //Function to add list for each Hound object
-  function addListItem(hound) {
-    var $houndList = $('.hound-list');
+  //Function to add list for each dog object
+  function addListItem(dog) {
+    var $dogList = $('.dog-list');
     var $listItem = $('<li></li>');
     var $button = $("<div class='list-button'>);
 
     $('houndList').append($listItem);
     $('listItem').append($button);
-    $button.innerText = hound.message;
+    $button.innerText = dog.message;
     $button.classList.add('list-button');
     $listItem.classList.add('buttonstyle');
     $button.on('click', function() {
-      showDetails(hound);
+      showDetails(dog);
     });
   }
 
   function add(name) {
-    /*Add Additional Hound Attributes To Object Array*/
+    /*Add Additional dog Attributes To Object Array*/
     repository.push(name);
   }
 
@@ -47,16 +47,16 @@ var houndRepository = (function() {
     return repository;
   }
 
-  //Function to load hound list from API - in jQuery instead of fetch
+  //Function to load dog list from API - in jQuery instead of fetch
   // ...return fetch(apiUrl).then(function (response)... forEach(function (item) etcetera
   function loadList() {
     return $.ajax(apiUrl, {dataType: 'json'}).then(function(item) {
       $.each(item.results, function(index, item) {
-          var hound = {
+          var dog = {
             name: item.message,
             detailsUrl: item.url
           };
-          add(hound);
+          add(dog);
         });
       }).catch(function(e) {
         console.error(e);
@@ -69,8 +69,8 @@ var houndRepository = (function() {
         // add the details to the item
         item.imageUrl = details.sprites.front_default;
                                 item.types = details.subbreeds;
-        item.types = details.types.map(function(hound){
-        return hound.subbreed.name;
+        item.types = details.types.map(function(dog){
+        return dog.subbreed.name;
       });
 
       }).catch(function(e) {
@@ -97,7 +97,7 @@ var houndRepository = (function() {
     var modalType = $('p');
     $modalType.html(item.breeds class='modal-details');
 
-    //Hound display image in modal
+    //dogbreed display image in modal
     var imageElement = $('img');
     $imageElement.html(item.imageUrl class='modal-img');
 
@@ -115,10 +115,10 @@ var houndRepository = (function() {
     showModal('Modal title', "This is the modal content!");
   });
 
-  //Function to show details of each hound breed
+  //Function to show details of each dog breed
   function showDetails(item) {
-    houndRepository.loadDetails(item).then(function() {
-      houndRepository.showModal(item);
+    dogRepository.loadDetails(item).then(function() {
+      dogRepository.showModal(item);
     });
   }
 
@@ -137,8 +137,8 @@ var houndRepository = (function() {
 // END of IIFE for Scoobidex repository
 
 //Creates list of Dogs with hound breeds name on the button
-houndRepository.loadList().then(function() {
-  houndRepository.getAll().forEach(function(hound) {
-    houndRepository.addListItem(hound);
+dogRepository.loadList().then(function() {
+  dogRepository.getAll().forEach(function(dog) {
+    dogRepository.addListItem(dog);
   });
 });
