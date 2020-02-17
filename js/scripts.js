@@ -28,7 +28,7 @@ var houndRepository = (function() {
 
     $houndList.appendChild($listItem);
     $listItem.appendChild($button);
-    $button.innerText = hound.name;
+    $button.innerText = hound.message;
     $button.classList.add("list-button");
     $listItem.classList.add("buttonstyle");
     $button.addEventListener("click", function(event) {
@@ -48,20 +48,17 @@ var houndRepository = (function() {
 
   //Function to load hound list from API
   function loadList() {
-    return fetch(apiUrl)
-      .then(function(response) {
+    return fetch(apiUrl).then(function(response) {
         return response.json();
-      })
-      .then(function(json) {
+      }).then(function(json) {
         json.results.forEach(function(item) {
           var hound = {
-            name: item.name,
+            name: item.message,
             detailsUrl: item.url
           };
           add(hound);
         });
-      })
-      .catch(function(e) {
+      }).catch(function(e) {
         console.error(e);
       });
   }
@@ -100,12 +97,12 @@ var houndRepository = (function() {
     closeButtonElement.addEventListener("click", hideModal);
 
     var modalTitle = document.createElement("h1");
-    modalTitle.innerText = item.name;
+    modalTitle.innerText = item.message;
     modalTitle.classList.add("modal-title");
 
     var modalType = document.createElement("p");
     modalType.classList.add("modal-details");
-    modalType.innerText = "sub-breed: " + item.types;
+    modalType.innerText = "sub-breed: " + item.breeds;
 
     //Hound display image in modal
     var imageElement = document.createElement("img");
