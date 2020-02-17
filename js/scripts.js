@@ -1,13 +1,13 @@
 /*!
  * Here comes all Javascript
- * Scoobidex App
- * Date: 2019-11-11
+ * Scoobidex App - rewritten pokedex comes here
+ * Date: 2020-14-02
  */
 // START of IIFE for Scoobidex repository
 var houndRepository = (function() {
   "use strict";
   var repository = [];
-  var apiUrl = "https://dog.ceo/api/breed/hound/images";
+  var apiUrl = "https://dog.ceo/api/breeds/list/all";
   var $modalContainer = document.querySelector("#modal-container");
 
   //Function to add new hound data
