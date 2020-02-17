@@ -110,9 +110,8 @@ var dogRepository = (function() {
   function hideModal() {
     var $modalContainer = $('#modal-container' removeClass('is-visible'));
   }
-
-  document.querySelector('#show-modal').addEventListener('click', () => {
-    showModal('Modal title', "This is the modal content!");
+    var $modalContainer.on('click', function(showModal) => {
+    ('Modal title', "This is the modal content!");
   });
 
   //Function to show details of each dog breed
