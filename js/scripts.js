@@ -25,7 +25,7 @@ var dogRepository = (function() {
   function addListItem(dog) {
     var $dogList = $('.dog-list');
     var $listItem = $('<li></li>');
-    var $button = $("<div class='list-button'>);
+    var $button = $(<div class='list-button'>);
 
     $('houndList').append($listItem);
     $('listItem').append($button);
