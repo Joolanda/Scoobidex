@@ -24,7 +24,7 @@ var houndRepository = (function() {
   //Function to add list for each Hound object
   function addListItem(hound) {
     var $houndList = $('.hound-list');
-    var $listItem = $('li');
+    var $listItem = $('<li></li>');
     var $button = $("<div class='list-button'>);
 
     $('houndList').append($listItem);
@@ -47,12 +47,11 @@ var houndRepository = (function() {
     return repository;
   }
 
-  //Function to load hound list from API
+  //Function to load hound list from API - in jQuery instead of fetch
+  // ...return fetch(apiUrl).then(function (response)... forEach(function (item) etcetera
   function loadList() {
-    return fetch(apiUrl).then(function(response) {
-        return response.json();
-      }).then(function(json) {
-        json.results.forEach(function(item) {
+    return $.ajax(apiUrl, {dataType: 'json'}).then(function(item) {
+      $.each(item.results, function(index, item) {
           var hound = {
             name: item.message,
             detailsUrl: item.url
@@ -66,16 +65,15 @@ var houndRepository = (function() {
 
   function loadDetails(item) {
     var url = item.detailsUrl;
-    return fetch(url)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(details) {
-        // Now we add the details to the item
+    return $.ajax(url, {dataType: 'json'}).then(function(details) {
+        // add the details to the item
         item.imageUrl = details.sprites.front_default;
-        item.types = Object.keys(details.types);
-      })
-      .catch(function(e) {
+                                item.types = details.subbreeds;
+        item.types = details.types.map(function(hound){
+        return hound.subbreed.name;
+      });
+
+      }).catch(function(e) {
         console.error(e);
       });
   }
@@ -87,38 +85,30 @@ var houndRepository = (function() {
     $modalContainer.innerHTML = '';
     $modalContainer.classList.add('is-visible');
 
-    var modal = document.createElement('div');
-    modal.classList.add('modal');
+    var $modal = $('<div class='modal'></div>');
 
     // add the new modal content
-    var closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'Close';
-    closeButtonElement.addEventListener('click', hideModal);
+    var $closeButtonElement = $('<button='modal-close'>Close</button>');
+    $closeButtonElement.on('click', function(hideModal);
 
-    var modalTitle = document.createElement('h1');
-    modalTitle.innerText = item.message;
-    modalTitle.classList.add('modal-title');
+    var modalTitle = $('h1');
+    $modalTitle.html(item.message class='modal-title')
 
-    var modalType = document.createElement('p');
-    modalType.classList.add('modal-details');
-    modalType.innerText = 'sub-breed: ' + item.breeds;
+    var modalType = $('p');
+    $modalType.html(item.breeds class='modal-details');
 
     //Hound display image in modal
-    var imageElement = document.createElement('img');
-    imageElement.classList.add('modal-img');
-    imageElement.src = item.imageUrl;
+    var imageElement = $('img');
+    $imageElement.html(item.imageUrl class='modal-img');
 
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(imageElement);
-    modal.appendChild(modalTitle);
-    modal.appendChild(modalType);
-    $modalContainer.appendChild(modal);
+    $modal.append($imageElement);
+    $modal.append($modalTitle);
+    $modal.append($modalType);
+    $$modalContainer.append($modal);
   }
 
   function hideModal() {
-    var $modalContainer = document.querySelector('#modal-container');
-    $modalContainer.classList.remove('is-visible');
+    var $modalContainer = $('#modal-container' removeClass('is-visible'));
   }
 
   document.querySelector('#show-modal').addEventListener('click', () => {
