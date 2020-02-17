@@ -9,6 +9,7 @@ var houndRepository = (function() {
   var repository = [];
   var apiUrl = "https://dog.ceo/api/breeds/list/all";
   var $modalContainer = document.querySelector("#modal-container");
+  var $houndList = $("ul");
 
   //Function to add new hound data
   function add(hound) {
@@ -145,6 +146,13 @@ var houndRepository = (function() {
     }
   });
 
+  //Function to show details of each hound breed
+  function showDetails(item) {
+    houndRepository.loadDetails(item).then(function() {
+      houndRepository.showModal(item);
+    });
+  }
+  
   return {
     /*Return All Previous Function In Order To Be Available Outside Of IIFE */
     add: add,
@@ -165,10 +173,3 @@ houndRepository.loadList().then(function() {
     houndRepository.addListItem(hound);
   });
 });
-
-//Function to show details of each hound breed
-function showDetails(item) {
-  houndRepository.loadDetails(item).then(function() {
-    houndRepository.showModal(item);
-  });
-}
