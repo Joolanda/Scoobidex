@@ -125,26 +125,6 @@ var houndRepository = (function() {
   document.querySelector("#show-modal").addEventListener("click", () => {
     showModal("Modal title", "This is the modal content!");
   });
-  // Hide Modal with escape key
-  window.addEventListener("keydown", e => {
-    var $modalContainer = document.querySelector("#modal-container");
-    if (
-      e.key === "Escape" &&
-      $modalContainer.classList.contains("is-visible")
-    ) {
-      hideModal();
-    }
-  });
-
-  // Hide Modal by clicking outside of Modal
-  $modalContainer.addEventListener("click", e => {
-    // Since this is also triggered when clicking INSIDE the modal container,
-    // We only want to close if the user clicks directly on the overlay
-    var target = e.target;
-    if (target === $modalContainer) {
-      hideModal();
-    }
-  });
 
   //Function to show details of each hound breed
   function showDetails(item) {
@@ -152,7 +132,7 @@ var houndRepository = (function() {
       houndRepository.showModal(item);
     });
   }
-  
+
   return {
     /*Return All Previous Function In Order To Be Available Outside Of IIFE */
     add: add,
