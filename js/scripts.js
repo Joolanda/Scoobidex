@@ -27,7 +27,7 @@ var dogRepository = (function() {
     var $listItem = $('<li></li>');
     var $button = $(<div class='list-button'>);
 
-    $('houndList').append($listItem);
+    $('dogList').append($listItem);
     $('listItem').append($button);
     $button.innerText = dog.message; // take a better look at this..rewrite
     $button.classList.add('list-button'); // take a better look at this..rewrite
