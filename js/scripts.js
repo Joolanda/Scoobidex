@@ -80,7 +80,8 @@ var dogRepository = (function() {
 
   function showModal(item) {
     //clear all existing modal content
-    $modalContainer.html(' ' + class="is-visible");
+    $modalContainer.html('');
+    $modalContainer.addClass('is-visible');
 
     var $modal = $('<div class="modal"></div>');
 
