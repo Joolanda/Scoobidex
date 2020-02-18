@@ -101,7 +101,7 @@ var dogRepository = (function() {
     $modal.append($imageElement);
     $modal.append($modalTitle);
     $modal.append($modalType);
-    $$modalContainer.append($modal);
+    $modalContainer.append($modal);
   }
 
   function hideModal() {
