@@ -24,12 +24,12 @@ var dogRepository = (function() {
   //Function to add list for each dog object
   function addListItem(dog) {
     var $dogList = $('.dog-list');
-    var $listItem = $('<li></li>');
-    var $button = $('<button class='list-button'>' + dog.name + '</button>');
+    var $listItem = $('<li class="list-group-item"></li>');
+    var $button = $('<button class="list-button">' + dog.name + '</button>');
 
-    $dogList.append($listItem);
-    $listItem.append($button class='buttonstyle');
-    $button.html(dog.name class='list-button'); 
+    $(dogList).append($listItem);
+    $(listItem).append($button);
+    $(button).html(dog.name); 
     $button.on('click', function() {
       showDetails(dog);
     });
@@ -51,7 +51,7 @@ var dogRepository = (function() {
     return $.ajax(apiUrl, {dataType: 'json'}).then(function(item) {
       $.each(item.results, function(index, item) {
           var dog = {
-            name: item.message,
+            breeds: item.message,
             detailsUrl: item.url
           };
           add(dog);
@@ -80,12 +80,12 @@ var dogRepository = (function() {
 
   function showModal(item) {
     //clear all existing modal content
-    $modalContainer.innerHTML = '' + class='is-visible');
+    $modalContainer.html(' ' + class="is-visible");
 
-    var $modal = $('<div class='modal'></div>');
+    var $modal = $('<div class="modal"></div>');
 
     // add the new modal content
-    var $closeButtonElement = $('<button='modal-close'>Close</button>'');
+    var $closeButtonElement = $('<button="modal-close">Close</button>');
     $closeButtonElement.on('click', function(hideModal);
 
     var modalTitle = $('h1');
