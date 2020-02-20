@@ -88,10 +88,10 @@ var dogRepository = (function() {
     // add the new modal content
     var $closeButtonElement = $('<button></button>');
     $closeButtonElement.html("Close" class='modal-close');
-    $closeButtonElement.on('click', function(hideModal);
+    $closeButtonElement.on('click', function(hideModal));
 
     var modalTitle = $('h1');
-    $modalTitle.html(item.message class='modal-title')
+    $modalTitle.html(item.message class='modal-title');
 
     var modalType = $('p');
     $modalType.html(item.breeds class='modal-details');
