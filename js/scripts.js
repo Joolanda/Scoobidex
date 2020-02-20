@@ -86,7 +86,8 @@ var dogRepository = (function() {
     var $modal = $('<div class="modal"></div>');
 
     // add the new modal content
-    var $closeButtonElement = $('<button="modal-close">Close</button>');
+    var $closeButtonElement = $('<button></button>');
+    $closeButtonElement.html('Close' class='modal-close');
     $closeButtonElement.on('click', function(hideModal);
 
     var modalTitle = $('h1');
@@ -99,6 +100,7 @@ var dogRepository = (function() {
     var imageElement = $('img');
     $imageElement.html(item.imageUrl class='modal-img');
 
+    $modal.append($closeButtonElement);
     $modal.append($imageElement);
     $modal.append($modalTitle);
     $modal.append($modalType);
@@ -110,7 +112,7 @@ var dogRepository = (function() {
   }
     var $modalContainer.on('click', function(showModal) => {
     ('Modal title', "This is the modal content!");
-  });
+    });
 
   //Function to show details of each dog breed
   function showDetails(item) {
