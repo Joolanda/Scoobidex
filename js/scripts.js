@@ -48,8 +48,10 @@ var dogRepository = (function() {
   //Function to load dog list from API - in jQuery instead of fetch
   // ...return fetch(apiUrl).then(function (response)... forEach(function (item) etcetera
   function loadList() {
-    return $.ajax(apiUrl, {dataType: 'json'}).then(function(item) {
-      $.each(item.results, function(index, item) {
+    return $.ajax(apiUrl, {dataType: 'json'}).then(function(responseJSON) {
+      return responseJSON;
+    }).then(function(json) {
+      json.results.forEach(function(item) {
           var dog = {
             breeds: item.message,
             detailsUrl: item.url
@@ -63,7 +65,9 @@ var dogRepository = (function() {
 
   function loadDetails(item) {
     var url = item.detailsUrl;
-    return $.ajax(url, {dataType: 'json'}).then(function(details) {
+    return $.ajax(url, {dataType: 'json'}).then(function(responseJSON) {
+      return responseJSON;
+    }).then(function(details) {
         // add the details to the item
         item.imageUrl = details.sprites.front_default;
                                 item.types = details.subbreeds;
