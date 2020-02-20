@@ -73,11 +73,11 @@ var dogRepository = (function() {
                                 item.types = details.subbreeds;
         item.types = details.types.map(function(dog){
         return dog.subbreed.name;
-      });
 
       }).catch(function(e) {
         console.error(e);
       });
+    }
   }
 
   // Function to show a modal with title and text
