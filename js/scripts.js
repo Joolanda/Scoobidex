@@ -96,10 +96,10 @@ var dogRepository = (function() {
     });
 
     var modalTitle = $('h1');
-    $modalTitle.html(item.message class='modal');
+    $modalTitle.html(item.name class='modal');
 
     var modalType = $('p');
-    $modalType.html(item.breeds class='modal');
+    $modalType.html('sub-breed: ' + item.types class='modal');
 
     //dogbreed display image in modal
     var imageElement = $('img');
@@ -111,9 +111,6 @@ var dogRepository = (function() {
     $modal.append($modalType);
     $modalContainer.append($modal);
   }
-
-
-
 
   function hideModal() {
     var $modalContainer = $('#modal-container' removeClass('is-visible'));
