@@ -96,10 +96,10 @@ var dogRepository = (function() {
     });
 
     var modalTitle = $('h1');
-    $modalTitle.html(item.message class='modal-title');
+    $modalTitle.html(item.message class='modal');
 
     var modalType = $('p');
-    $modalType.html(item.breeds class='modal-details');
+    $modalType.html(item.breeds class='modal');
 
     //dogbreed display image in modal
     var imageElement = $('img');
