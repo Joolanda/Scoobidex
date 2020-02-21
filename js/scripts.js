@@ -77,7 +77,7 @@ var dogRepository = (function() {
       }).catch(function(e) {
         console.error(e);
       });
-    }
+    });
   }
 
   // Function to show a modal with title and text
@@ -90,9 +90,10 @@ var dogRepository = (function() {
     var $modal = $('<div class="modal"></div>');
 
     // add the new modal content
-    var $closeButtonElement = $('<button></button>');
-    $closeButtonElement.html("Close" class='modal-close');
-    $closeButtonElement.on('click', function(hideModal));
+    var $closeButtonElement = $('<button type="button" class="modal-close">Close</button>');
+    $closeButtonElement.on('click', function (hideModal) {
+      hideModal()
+    });
 
     var modalTitle = $('h1');
     $modalTitle.html(item.message class='modal-title');
@@ -110,6 +111,9 @@ var dogRepository = (function() {
     $modal.append($modalType);
     $modalContainer.append($modal);
   }
+
+
+
 
   function hideModal() {
     var $modalContainer = $('#modal-container' removeClass('is-visible'));
