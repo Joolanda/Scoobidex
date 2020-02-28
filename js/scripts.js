@@ -23,19 +23,18 @@ var dogRepository = (function() {
   function addListItem(dog) {
     var $dogList = $(".dog-list");
     var $listItem = $('<li class="buttonstyle"></li>');
-    var $button = $('<button class="list-button">' + dog.name + "</button>");
+    var $button = $('<button class="list-button">' + dog.breeds + "</button>");
 
     $dogList.append($listItem);
     $listItem.append($button);
-    $button.html(dog.name);
     $button.on("click", function(event) {
       showDetails(dog);
     });
   }
 
-  function add(name) {
+  function add(breeds) {
     /*Add Additional dog Attributes To Object Array*/
-    repository.push(name);
+    repository.push(breeds);
   }
 
   function catchAll() {
@@ -50,28 +49,10 @@ var dogRepository = (function() {
       .then(function(item) {
         $.each(item.results, function(index, item) {
           var dog = {
-            breeds: item.message,
+            name: item.message,
             detailsUrl: item.url
           };
           add(dog);
-        });
-      })
-      .catch(function(e) {
-        console.error(e);
-      });
-  }
-
- //Function to load dog list from API
-  function loadList() {
-    return $.ajax(apiUrl, { dataType: "json" }).then(function(responseJSON) {
-        return responseJSON;
-      }).then(function(json) {
-        json.results.forEach(function(item){
-          var pokemon = {
-            name: item.name,
-            detailsUrl: item.url
-          };
-          add(pokemon);
         });
       })
       .catch(function(e) {
@@ -129,7 +110,7 @@ var dogRepository = (function() {
     modal.append(imageElement);
     modal.append(modalTitle);
     modal.append(modalType);
-    $modalContainer.append($modal);
+    $modalContainer.append(modal);
   }
 
 function hideModal() {
