@@ -5,11 +5,9 @@
  */
 // START of IIFE for Scoobidex repository
 var dogRepository = (function() {
-  "use strict";
   var repository = [];
   var apiUrl = "https://dog.ceo/api/breeds/list/all";
   var $modalContainer = $("#modal-container");
-  var $dogList = $("ul");
 
   //Function to add new hound data
   function add(dog) {
@@ -24,13 +22,13 @@ var dogRepository = (function() {
   //Function to add list for each dog object
   function addListItem(dog) {
     var $dogList = $(".dog-list");
-    var $listItem = $('<li class="list-group-item"></li>');
+    var $listItem = $('<li class="buttonstyle"></li>');
     var $button = $('<button class="list-button">' + dog.name + "</button>");
 
-    $(dogList).append($listItem);
-    $(listItem).append($button);
-    $(button).html(dog.name);
-    $button.on("click", function() {
+    $dogList.append($listItem);
+    $listItem.append($button);
+    $button.html(dog.name);
+    $button.on("click", function(event) {
       showDetails(dog);
     });
   }
