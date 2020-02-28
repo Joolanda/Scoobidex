@@ -61,38 +61,49 @@ var dogRepository = (function() {
       });
   }
 
-  function loadDetails(item) {
-    var url = item.detailsUrl;
-    return $.ajax(url, { dataType: "json" })
-      .then(function(details) {
-        // Now we add the details to the item
-        item.imageUrl = details.sprites.front_default;
-        item.types = Object.keys(details.types);
+ //Function to load dog list from API
+  function loadList() {
+    return $.ajax(apiUrl, { dataType: "json" }).then(function(responseJSON) {
+        return responseJSON;
+      }).then(function(json) {
+        json.results.forEach(function(item){
+          var pokemon = {
+            name: item.name,
+            detailsUrl: item.url
+          };
+          add(pokemon);
+        });
       })
       .catch(function(e) {
         console.error(e);
       });
   }
 
-  function loadDetails(item) {
-    var url = item.detailsUrl;
-    return $.ajax(url, { dataType: "json" })
-      .then(function(responseJSON) {
-        return responseJSON;
-      })
-      .then(function(details) {
-        // add the details to the item
-        item.imageUrl = details.sprites.front_default;
-        item.types = details.subbreeds;
-        item.types = details.types
-          .map(function(dog) {
-            return dog.subbreed.name;
+    function loadDetails(item) {
+        var url = item.detailsUrl;
+        return $.ajax(url, {dataType: 'json'}).then(function(responseJSON) {
+            return responseJSON;
+            }).then(function(details) {
+        // Now we add the details to the item
+            item.imageUrl = details.sprites.front_default;
+        //item.types = details.subbreeds;
+        //item.types = details.types
+        
+        //  .map(function(dog) {
+        //    return dog.subbreed.name;
+    
+        // loop for each of the pokemon types:
+            item.types = Object.keys(details.types);
+            })
+            .catch(function(e) {
+            console.error(e);
+            })
+    }
           })
           .catch(function(e) {
             console.error(e);
-          });
-      });
-  }
+          })
+    }
 
   // Function to show a modal with title and text
 
