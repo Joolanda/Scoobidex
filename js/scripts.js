@@ -99,12 +99,7 @@ var dogRepository = (function() {
             console.error(e);
             })
     }
-          })
-          .catch(function(e) {
-            console.error(e);
-          })
-    }
-
+    
   // Function to show a modal with title and text
 
   function showModal(item) {
@@ -112,33 +107,35 @@ var dogRepository = (function() {
     $modalContainer.empty();
     $modalContainer.addClass("is-visible");
 
-    var $modal = $('<div class="modal"></div>');
+    var modal = $('<div class="modal"></div>');
 
     // add the new modal content
     var closeButtonElement = $('<button class="modal-close">Close</button>');
     closeButtonElement.on("click", hideModal);
 
-    var modalTitle = $("<h1>" + item.message + "</h1>");
+    //var modalTitle = $("<h1>" + item.message + "</h1>");
+    var modalTitle = $('<h1 class="modal-title">' + item.name + "</h1>");
 
-    var modalType = $("<p>" + "Type : " + item.breeds + "</p>");
+    //var modalType = $("<p>" + "Type : " + item.breeds + "</p>");
+    var modalType = $(
+      '<p class="modal-details">' + "Type : " + item.types + "</p>"
+    );
 
     //dogbreed display image in modal
     var imageElement = $('<img class="modal-img">');
     imageElement.attr("src", item.imageUrl);
 
-    $modal.append(closeButtonElement);
-    $modal.append(imageElement);
-    $modal.append(modalTitle);
-    $modal.append(modalType);
+    modal.append(closeButtonElement);
+    modal.append(imageElement);
+    modal.append(modalTitle);
+    modal.append(modalType);
     $modalContainer.append($modal);
   }
 
-  //function hideModal() {
-  // var $modalContainer = $('#modal-container' removeClass('is-visible'));
-  // }
-  //   var $modalContainer.on('click', function(showModal) => {
-  //   ('Modal title', "This is the modal content!");
-  //   });
+function hideModal() {
+    var $modalContainer = $("#modal-container");
+    $modalContainer.removeClass("is-visible");
+  }
 
   //Function to show details of each dog breed
   function showDetails(item) {
@@ -155,8 +152,8 @@ var dogRepository = (function() {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showModal: showModal
-    //hideModal: hideModal
+    showModal: showModal,
+    hideModal: hideModal
   };
 })();
 // END of IIFE for Scoobidex repository
