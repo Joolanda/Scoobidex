@@ -60,27 +60,29 @@ var dogRepository = (function() {
       });
   }
 
-    function loadDetails(item) {
-        var url = item.detailsUrl;
-        return $.ajax(url, {dataType: 'json'}).then(function(responseJSON) {
-            return responseJSON;
-            }).then(function(details) {
+  function loadDetails(item) {
+    var url = item.detailsUrl;
+    return $.ajax(url, { dataType: "json" })
+      .then(function(responseJSON) {
+        return responseJSON;
+      })
+      .then(function(details) {
         // Now we add the details to the item
-            item.imageUrl = details.sprites.front_default;
+        item.imageUrl = details.sprites.front_default;
         //item.types = details.subbreeds;
         //item.types = details.types
-        
+
         //  .map(function(dog) {
         //    return dog.subbreed.name;
-    
+
         // loop for each of the pokemon types:
-            item.types = Object.keys(details.types);
-            })
-            .catch(function(e) {
-            console.error(e);
-            })
-    }
-    
+        item.types = Object.keys(details.types);
+      })
+      .catch(function(e) {
+        console.error(e);
+      });
+  }
+
   // Function to show a modal with title and text
 
   function showModal(item) {
@@ -113,7 +115,7 @@ var dogRepository = (function() {
     $modalContainer.append(modal);
   }
 
-function hideModal() {
+  function hideModal() {
     var $modalContainer = $("#modal-container");
     $modalContainer.removeClass("is-visible");
   }
@@ -145,3 +147,4 @@ dogRepository.loadList().then(function() {
     dogRepository.addListItem(dog);
   });
 });
+
